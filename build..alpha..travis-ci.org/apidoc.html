@@ -1,0 +1,302 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/xk/node-threads-a-gogo"
+
+    >threads_a_gogo (v0.1.13)</a>
+</h1>
+<h4>██ Simple and fast JavaScript threads for Node.js ██</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.threads_a_gogo">module threads_a_gogo</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.threads_a_gogo.create">
+            function <span class="apidocSignatureSpan">threads_a_gogo.</span>create
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.threads_a_gogo.createPool">
+            function <span class="apidocSignatureSpan">threads_a_gogo.</span>createPool
+            <span class="apidocSignatureSpan">(n)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">threads_a_gogo.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.threads_a_gogo.create">module threads_a_gogo.create</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.threads_a_gogo.create.create">
+            function <span class="apidocSignatureSpan">threads_a_gogo.</span>create
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.threads_a_gogo.createPool">module threads_a_gogo.createPool</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.threads_a_gogo.createPool.createPool">
+            function <span class="apidocSignatureSpan">threads_a_gogo.</span>createPool
+            <span class="apidocSignatureSpan">(n)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.threads_a_gogo" id="apidoc.module.threads_a_gogo">module threads_a_gogo</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.threads_a_gogo.create" id="apidoc.element.threads_a_gogo.create">
+        function <span class="apidocSignatureSpan">threads_a_gogo.</span>create
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">create = function () { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+function cb (err, data) {
+  process.stdout.write(data);
+  this.eval(&#x27;fibo(35)&#x27;, cb);
+}
+
+var thread= require(&#x27;threads_a_gogo&#x27;).<span class="apidocCodeKeywordSpan">create</span>();
+
+thread.eval(fibo).eval(&#x27;fibo(35)&#x27;, cb);
+
+(function spinForever () {
+  process.stdout.write(&#x22;.&#x22;);
+  setImmediate(spinForever);
+})();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.threads_a_gogo.createPool" id="apidoc.element.threads_a_gogo.createPool">
+        function <span class="apidocSignatureSpan">threads_a_gogo.</span>createPool
+        <span class="apidocSignatureSpan">(n)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createPool(n){&#x27;use strict&#x27;;var o,tagg,jobsCtr;function load(path,cb){o.pool.forEach(function(v,i,o){v.load(path,cb)});return
+ o;}
+function wrap(cb){return function wrapcb(err,result){jobsCtr-=1;if(cb)cb.call(this,err,result);}}
+function evalAny(src,cb){jobsCtr+=1;o.pool[rnd(o.pool.length)].eval(src,wrap(cb));return o;}
+function evalAll(src,cb,i){i=o.pool.length;while(i--){jobsCtr+=1;o.pool[i].eval(src,wrap(cb));};return o;}
+function emitAny(t,args){args=Array.prototype.splice.call(arguments,0);t=o.pool[rnd(o.pool.length)];t.emit.apply(t,args);return
+o;}
+function emitAll(t,args,i){args=Array.prototype.splice.call(arguments,0);i=o.pool.length;while(i--){t=o.pool[i];t.emit.apply(t,args
+);}
+return o;}
+function on(event,cb){o.pool.forEach(function(v,i,o){v.on(event,cb)});return o;}
+function rnd(n){return Math.floor(n*Math.random())}
+function destroy(rudeza,sucb,ctr){ctr=0;function micb(){if(++ctr===o.pool.length)setImmediate(sucb);}
+if(typeof sucb!==&#x27;function&#x27;)sucb=0;o.pool.forEach(function(v,i,o){sucb?v.destroy(rudeza,micb):v.destroy(rudeza)});o.any.eval=o.any
+.emit=o.all.eval=o.all.emit=o.on=o.load=o.destroy=function err(){throw new Error(&#x27;This thread pool has been destroyed&#x27;);};o.pool
+=[];}
+n=Math.floor(n);if(!(n&#x3e;0)){throw new Error(&#x27;.createPool( numOfThreads ): numOfThreads must be a Number &#x3e; 0&#x27;);}
+tagg=this;jobsCtr=0;o={load:load,on:on,any:{eval:evalAny,emit:emitAny},all:{eval:evalAll,emit:emitAll},totalThreads:function getTotalThreads
+(){return o.pool.length},idleThreads:function getIdleThreads(){return o.pool.length},pendingJobs:function getPendingJobs(){return
+ jobsCtr},destroy:destroy,pool:[]};try{while(n--)o.pool[n]=tagg.create();}
+catch(e){if(o.pool.length){o.pool.length-=1;while(o.pool.length)o.pool.pop().destroy(1);}
+throw e;}
+return o;}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+``` javascript
+function fibo (n) {
+  return n &#x3e; 1 ? fibo(n - 1) + fibo(n - 2) : 1;
+}
+
+var numThreads= 10;
+var threadPool= require(&#x27;threads_a_gogo&#x27;).<span class="apidocCodeKeywordSpan">createPool</span>(numThreads).all.eval(fibo
+);
+
+threadPool.all.eval(&#x27;fibo(35)&#x27;, function cb (err, data) {
+  process.stdout.write(&#x22; [&#x22;+ this.id+ &#x22;]&#x22;+ data);
+  this.eval(&#x27;fibo(35)&#x27;, cb);
+});
+
+(function spinForever () {
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.threads_a_gogo.create" id="apidoc.module.threads_a_gogo.create">module threads_a_gogo.create</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.threads_a_gogo.create.create" id="apidoc.element.threads_a_gogo.create.create">
+        function <span class="apidocSignatureSpan">threads_a_gogo.</span>create
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">create = function () { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+function cb (err, data) {
+  process.stdout.write(data);
+  this.eval(&#x27;fibo(35)&#x27;, cb);
+}
+
+var thread= require(&#x27;threads_a_gogo&#x27;).<span class="apidocCodeKeywordSpan">create</span>();
+
+thread.eval(fibo).eval(&#x27;fibo(35)&#x27;, cb);
+
+(function spinForever () {
+  process.stdout.write(&#x22;.&#x22;);
+  setImmediate(spinForever);
+})();
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.threads_a_gogo.createPool" id="apidoc.module.threads_a_gogo.createPool">module threads_a_gogo.createPool</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.threads_a_gogo.createPool.createPool" id="apidoc.element.threads_a_gogo.createPool.createPool">
+        function <span class="apidocSignatureSpan">threads_a_gogo.</span>createPool
+        <span class="apidocSignatureSpan">(n)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createPool(n){&#x27;use strict&#x27;;var o,tagg,jobsCtr;function load(path,cb){o.pool.forEach(function(v,i,o){v.load(path,cb)});return
+ o;}
+function wrap(cb){return function wrapcb(err,result){jobsCtr-=1;if(cb)cb.call(this,err,result);}}
+function evalAny(src,cb){jobsCtr+=1;o.pool[rnd(o.pool.length)].eval(src,wrap(cb));return o;}
+function evalAll(src,cb,i){i=o.pool.length;while(i--){jobsCtr+=1;o.pool[i].eval(src,wrap(cb));};return o;}
+function emitAny(t,args){args=Array.prototype.splice.call(arguments,0);t=o.pool[rnd(o.pool.length)];t.emit.apply(t,args);return
+o;}
+function emitAll(t,args,i){args=Array.prototype.splice.call(arguments,0);i=o.pool.length;while(i--){t=o.pool[i];t.emit.apply(t,args
+);}
+return o;}
+function on(event,cb){o.pool.forEach(function(v,i,o){v.on(event,cb)});return o;}
+function rnd(n){return Math.floor(n*Math.random())}
+function destroy(rudeza,sucb,ctr){ctr=0;function micb(){if(++ctr===o.pool.length)setImmediate(sucb);}
+if(typeof sucb!==&#x27;function&#x27;)sucb=0;o.pool.forEach(function(v,i,o){sucb?v.destroy(rudeza,micb):v.destroy(rudeza)});o.any.eval=o.any
+.emit=o.all.eval=o.all.emit=o.on=o.load=o.destroy=function err(){throw new Error(&#x27;This thread pool has been destroyed&#x27;);};o.pool
+=[];}
+n=Math.floor(n);if(!(n&#x3e;0)){throw new Error(&#x27;.createPool( numOfThreads ): numOfThreads must be a Number &#x3e; 0&#x27;);}
+tagg=this;jobsCtr=0;o={load:load,on:on,any:{eval:evalAny,emit:emitAny},all:{eval:evalAll,emit:emitAll},totalThreads:function getTotalThreads
+(){return o.pool.length},idleThreads:function getIdleThreads(){return o.pool.length},pendingJobs:function getPendingJobs(){return
+ jobsCtr},destroy:destroy,pool:[]};try{while(n--)o.pool[n]=tagg.create();}
+catch(e){if(o.pool.length){o.pool.length-=1;while(o.pool.length)o.pool.pop().destroy(1);}
+throw e;}
+return o;}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+``` javascript
+function fibo (n) {
+  return n &#x3e; 1 ? fibo(n - 1) + fibo(n - 2) : 1;
+}
+
+var numThreads= 10;
+var threadPool= require(&#x27;threads_a_gogo&#x27;).<span class="apidocCodeKeywordSpan">createPool</span>(numThreads).all.eval(fibo
+);
+
+threadPool.all.eval(&#x27;fibo(35)&#x27;, function cb (err, data) {
+  process.stdout.write(&#x22; [&#x22;+ this.id+ &#x22;]&#x22;+ data);
+  this.eval(&#x27;fibo(35)&#x27;, cb);
+});
+
+(function spinForever () {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
