@@ -80,32 +80,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.threads_a_gogo.create">module threads_a_gogo.create</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.threads_a_gogo.create.create">
-            function <span class="apidocSignatureSpan">threads_a_gogo.</span>create
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.threads_a_gogo.createPool">module threads_a_gogo.createPool</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.threads_a_gogo.createPool.createPool">
-            function <span class="apidocSignatureSpan">threads_a_gogo.</span>createPool
-            <span class="apidocSignatureSpan">(n)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
 </ol></div>
 
 <div class="apidocSectionDiv">
@@ -192,97 +166,6 @@ threadPool.all.eval('fibo(35)', function cb (err, data) {
     </ul>
 
 
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.threads_a_gogo.create" id="apidoc.module.threads_a_gogo.create">module threads_a_gogo.create</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.threads_a_gogo.create.create" id="apidoc.element.threads_a_gogo.create.create">
-        function <span class="apidocSignatureSpan">threads_a_gogo.</span>create
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">create = function () { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-}
-
-function cb (err, data) {
-  process.stdout.write(data);
-  this.eval('fibo(35)', cb);
-}
-
-var thread= require('threads_a_gogo').<span class="apidocCodeKeywordSpan">create</span>();
-
-thread.eval(fibo).eval('fibo(35)', cb);
-
-(function spinForever () {
-  process.stdout.write(".");
-  setImmediate(spinForever);
-})();
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.threads_a_gogo.createPool" id="apidoc.module.threads_a_gogo.createPool">module threads_a_gogo.createPool</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.threads_a_gogo.createPool.createPool" id="apidoc.element.threads_a_gogo.createPool.createPool">
-        function <span class="apidocSignatureSpan">threads_a_gogo.</span>createPool
-        <span class="apidocSignatureSpan">(n)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function createPool(n){'use strict';var o,tagg,jobsCtr;function load(path,cb){o.pool.forEach(function(v,i,o){v.load(path,cb)});return
- o;}
-function wrap(cb){return function wrapcb(err,result){jobsCtr-=1;if(cb)cb.call(this,err,result);}}
-function evalAny(src,cb){jobsCtr+=1;o.pool[rnd(o.pool.length)].eval(src,wrap(cb));return o;}
-function evalAll(src,cb,i){i=o.pool.length;while(i--){jobsCtr+=1;o.pool[i].eval(src,wrap(cb));};return o;}
-function emitAny(t,args){args=Array.prototype.splice.call(arguments,0);t=o.pool[rnd(o.pool.length)];t.emit.apply(t,args);return
-o;}
-function emitAll(t,args,i){args=Array.prototype.splice.call(arguments,0);i=o.pool.length;while(i--){t=o.pool[i];t.emit.apply(t,args
-);}
-return o;}
-function on(event,cb){o.pool.forEach(function(v,i,o){v.on(event,cb)});return o;}
-function rnd(n){return Math.floor(n*Math.random())}
-function destroy(rudeza,sucb,ctr){ctr=0;function micb(){if(++ctr===o.pool.length)setImmediate(sucb);}
-if(typeof sucb!=='function')sucb=0;o.pool.forEach(function(v,i,o){sucb?v.destroy(rudeza,micb):v.destroy(rudeza)});o.any.eval=o.any
-.emit=o.all.eval=o.all.emit=o.on=o.load=o.destroy=function err(){throw new Error('This thread pool has been destroyed');};o.pool
-=[];}
-n=Math.floor(n);if(!(n&gt;0)){throw new Error('.createPool( numOfThreads ): numOfThreads must be a Number &gt; 0');}
-tagg=this;jobsCtr=0;o={load:load,on:on,any:{eval:evalAny,emit:emitAny},all:{eval:evalAll,emit:emitAll},totalThreads:function getTotalThreads
-(){return o.pool.length},idleThreads:function getIdleThreads(){return o.pool.length},pendingJobs:function getPendingJobs(){return
- jobsCtr},destroy:destroy,pool:[]};try{while(n--)o.pool[n]=tagg.create();}
-catch(e){if(o.pool.length){o.pool.length-=1;while(o.pool.length)o.pool.pop().destroy(1);}
-throw e;}
-return o;}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-
-``` javascript
-function fibo (n) {
-  return n &gt; 1 ? fibo(n - 1) + fibo(n - 2) : 1;
-}
-
-var numThreads= 10;
-var threadPool= require('threads_a_gogo').<span class="apidocCodeKeywordSpan">createPool</span>(numThreads).all.eval(fibo
-);
-
-threadPool.all.eval('fibo(35)', function cb (err, data) {
-  process.stdout.write(" ["+ this.id+ "]"+ data);
-  this.eval('fibo(35)', cb);
-});
-
-(function spinForever () {
-...</pre></li>
-    </ul>
 
 
 </div>
