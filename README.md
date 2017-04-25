@@ -1,4 +1,7 @@
-# api documentation for  [threads_a_gogo (v0.1.13)](https://github.com/xk/node-threads-a-gogo)  [![npm package](https://img.shields.io/npm/v/npmdoc-threads_a_gogo.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-threads_a_gogo) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-threads_a_gogo.svg)](https://travis-ci.org/npmdoc/node-npmdoc-threads_a_gogo)
+# npmdoc-threads_a_gogo
+
+#### basic api documentation for  [threads_a_gogo (v0.1.13)](https://github.com/xk/node-threads-a-gogo)  [![npm package](https://img.shields.io/npm/v/npmdoc-threads_a_gogo.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-threads_a_gogo) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-threads_a_gogo.svg)](https://travis-ci.org/npmdoc/node-npmdoc-threads_a_gogo)
+
 #### ██ Simple and fast JavaScript threads for Node.js ██
 
 [![NPM](https://nodei.co/npm/threads_a_gogo.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/threads_a_gogo)
@@ -95,7 +98,8 @@
             },
             "pkgid": "threads_a_gogo@0.1.13"
         }
-    ]
+    ],
+    "bin": {}
 }
 ```
 
